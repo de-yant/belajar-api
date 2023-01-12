@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,5 @@ Route::get('/me', [AuthenticationController::class, 'me'])->middleware(['auth:sa
 Route::post('/posts', [PostController::class, 'store'])->middleware(['auth:sanctum']);
 Route::put('/posts/{id}', [PostController::class, 'update'])->middleware(['idPost', 'auth:sanctum']);
 Route::delete('/posts/{id}', [PostController::class, 'destroy'])->middleware(['idPost', 'auth:sanctum']);
+
+Route::post('/comment', [CommentController::class, 'store'])->middleware(['auth:sanctum']);

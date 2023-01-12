@@ -17,10 +17,12 @@ class PostsDetailResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
+            'image' => $this->image,
             'news_content' => $this->news_content,
             'author' => $this->author,
             'updated_at' => date_format($this->updated_at, 'd-m-Y H:i:s'),
-            'writer' => $this->writer,
+            'writer' => $this->whenLoaded('writer'),
+            'comments' => $this->whenLoaded('comments')
         ];
     }
 }

@@ -15,12 +15,13 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('title',225);
+            $table->string('title', 225);
+            $table->string('image', 255);
             $table->text('news_content');
             $table->unsignedBigInteger('author');
             $table->timestamps();
             $table->softDeletes();
-            
+
             $table->foreign('author')->references('id')->on('users');
         });
     }
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post');
+        Schema::dropIfExists('posts');
     }
 };
